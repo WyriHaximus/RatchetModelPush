@@ -1,21 +1,26 @@
 {
-  "name": "WyriHaximus/RatchetModelPush",
-  "version": "0.0.1",
-  "description": "No description",
+  "name": "wyrihaximus/ratchet-model-push",
+  "version": "0.1.0-DEV",
+  "description": "Allows models to push data on write operations to wyrihaximus/ratchet.",
   "type": "cakephp-plugin",
   "keywords": [
-    "cakephp"
+    "cakephp",
+    "ratchet"
   ],
   "homepage": "http://github.com/WyriHaximus/RatchetModelPush",
   "license": "MIT",
   "authors": [
     {
       "name": "Cees-Jan kiewiet",
-      "role": "Maintainer"
-    },
+      "email": "ceesjank@gmail.com",
+      "role": "Maintainer",
+      "homepage": "http://wyrihaximus.net/"
+    }
   ],
   "require": {
-    "composer/installers": "*"
+    "composer/installers": "*",
+    "wyrihaximus/ratchet": "*",
+    "wyrihaximus/ratchet-commands": "*"
   },
   "support": {
     "issues": "https://github.com/WyriHaximus/RatchetModelPush/issues",
