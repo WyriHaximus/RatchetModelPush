@@ -12,18 +12,19 @@
 App::uses('RatchetMessageQueueCommand', 'RatchetCommands.Lib/MessageQueue/Command');
 
 class RatchetMessageQueueDummyCommand extends RatchetMessageQueueCommand {
-    
-    protected $callback;
-    
-    public function setCallback($callback) {
-        $this->callback = $callback;
-    }
-    
-    public function execute($eventSubject) {
-        return 1;
-    }
-    
-    public function response($response) {
-        call_user_func($this->callback, $response);
-    }
+
+	protected $_callback;
+
+	public function setCallback($callback) {
+		$this->_callback = $callback;
+	}
+
+	public function execute($eventSubject) {
+		return 1;
+	}
+
+	public function response($response) {
+		call_user_func($this->_callback, $response);
+	}
+
 }
