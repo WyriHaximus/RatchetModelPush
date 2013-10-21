@@ -43,7 +43,7 @@ class PushableBehavior extends ModelBehavior {
  * @param Model $Model
  * @param boolean $created
  */
-	public function afterSave(Model $Model, $created, options  = array()) {
+	public function afterSave(Model $Model, $created, $options  = array()) {
 		array_walk($this->settings[$Model->alias]['events'], array($this, '_afterSaveEventCheck'), array(
 			'id' => $Model->id,
 			'data' => $Model->data,
