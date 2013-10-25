@@ -39,8 +39,8 @@ class RatchetMessageQueueModelUpdateCommand extends RatchetMessageQueueCommand {
 	public function execute($eventSubject) {
 		$eventSubject->getLoop()->addTimer(.5, function() use ($eventSubject) {
 			$topics = $eventSubject->getTopics();
-			if (isset($topics[self::EVENT_PREFIX . $this->event])) {
-				$topics[self::EVENT_PREFIX . $this->event]->broadcast($this->data);
+			if (isset($topics[RatchetMessageQueueModelUpdateCommand::EVENT_PREFIX . $this->event])) {
+				$topics[RatchetMessageQueueModelUpdateCommand::EVENT_PREFIX . $this->event]->broadcast($this->data);
 			}
 		});
 
