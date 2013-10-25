@@ -19,8 +19,8 @@
   ],
   "require": {
     "composer/installers": "*",
-    "wyrihaximus/ratchet": "*",
-    "wyrihaximus/ratchet-commands": "*"
+    "wyrihaximus/ratchet": "dev-master",
+    "wyrihaximus/ratchet-commands": "dev-master"
   },
   "support": {
     "issues": "https://github.com/WyriHaximus/RatchetModelPush/issues",
