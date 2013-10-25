@@ -32,15 +32,21 @@ class RatchetMessageQueueModelUpdateCommand extends RatchetMessageQueueCommand {
 		$this->event = $event;
 	}
 
+	public function getEvent() {
+		return $this->event;
+	}
+
 	public function setData($data) {
 		$this->data = $data;
 	}
 
 	public function execute($eventSubject) {
-		$eventSubject->getLoop()->addTimer(.5, function() use ($eventSubject) {
+		$that = $this;
+
+		$eventSubject->getLoop()->addTimer(.5, function() use ($that, $eventSubject) {
 			$topics = $eventSubject->getTopics();
-			if (isset($topics[RatchetMessageQueueModelUpdateCommand::EVENT_PREFIX . $this->event])) {
-				$topics[RatchetMessageQueueModelUpdateCommand::EVENT_PREFIX . $this->event]->broadcast($this->data);
+			if (isset($topics[RatchetMessageQueueModelUpdateCommand::EVENT_PREFIX . $that->getEvent()])) {
+				$topics[RatchetMessageQueueModelUpdateCommand::EVENT_PREFIX . $that->getEvent()]->broadcast($this->data);
 			}
 		});
 
