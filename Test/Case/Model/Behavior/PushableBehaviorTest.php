@@ -108,14 +108,14 @@ class PushableBehaviorTest extends CakeTestCase {
 
 	public function testAfterSavePrepareEventNameId() {
 		$result = $this->PushableBehaviorTestCapsule->afterSavePrepareEventNameTest('Ratchet.Model.test.{id}', 1, array());
-		$this->assertEqual($result, 'Ratchet.Model.test.1');
+		$this->assertEquals($result, 'Ratchet.Model.test.1');
 	}
 
 	public function testAfterSavePrepareEventNameData() {
 		$result = $this->PushableBehaviorTestCapsule->afterSavePrepareEventNameTest('Ratchet.Model.test.{uuid}', 1, array(
 			'uuid' => 'kads-asdef-awsefg-234213',
 		));
-		$this->assertEqual($result, 'Ratchet.Model.test.kads-asdef-awsefg-234213');
+		$this->assertEquals($result, 'Ratchet.Model.test.kads-asdef-awsefg-234213');
 	}
 
 	public function providerAfterSaveCreated() {
@@ -140,7 +140,7 @@ class PushableBehaviorTest extends CakeTestCase {
 		$callbackFired = false;
 		$that = $this;
 		$this->callbacks['created'] = function($resultData) use ($that, &$callbackFired, $expectedData) {
-			$that->assertEqual($resultData, $expectedData);
+			$that->assertEquals($resultData, $expectedData);
 			$callbackFired = true;
 		};
 		$this->TransportProxy->getTransport()->setEventSubject(new DummyTransportEventSubjectTestImposer($this->callbacks, array(
@@ -177,7 +177,7 @@ class PushableBehaviorTest extends CakeTestCase {
 		$callbackFired = false;
 		$that = $this;
 		$this->callbacks['updated'] = function($resultData) use ($that, &$callbackFired, $expectedData) {
-			$that->assertEqual($resultData, $expectedData);
+			$that->assertEquals($resultData, $expectedData);
 			$callbackFired = true;
 		};
 		$this->TransportProxy->getTransport()->setEventSubject(new DummyTransportEventSubjectTestImposer($this->callbacks, array(
@@ -214,7 +214,7 @@ class PushableBehaviorTest extends CakeTestCase {
 		$callbackFired = false;
 		$that = $this;
 		$this->callbacks['refetch'] = function($resultData) use ($that, &$callbackFired, $expectedData) {
-			$that->assertEqual($resultData, $expectedData);
+			$that->assertEquals($resultData, $expectedData);
 			$callbackFired = true;
 		};
 		$this->TransportProxy->getTransport()->setEventSubject(new DummyTransportEventSubjectTestImposer($this->callbacks, array(
@@ -251,7 +251,7 @@ class PushableBehaviorTest extends CakeTestCase {
 		$callbackFired = false;
 		$that = $this;
 		$this->callbacks['updated'] = function($resultData) use ($that, &$callbackFired, $expectedData) {
-			$that->assertEqual($resultData, $expectedData);
+			$that->assertEquals($resultData, $expectedData);
 			$callbackFired = true;
 		};
 		$this->TransportProxy->getTransport()->setEventSubject(new DummyTransportEventSubjectTestImposer($this->callbacks, array(
@@ -295,7 +295,7 @@ class PushableBehaviorTest extends CakeTestCase {
 		$callbackFired = false;
 		$that = $this;
 		$this->callbacks['refetch'] = function($resultData) use ($that, &$callbackFired, $expectedData) {
-			$that->assertEqual($resultData, $expectedData);
+			$that->assertEquals($resultData, $expectedData);
 			$callbackFired = true;
 		};
 		$this->TransportProxy->getTransport()->setEventSubject(new DummyTransportEventSubjectTestImposer($this->callbacks, array(
