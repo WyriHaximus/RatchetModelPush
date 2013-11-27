@@ -4,6 +4,7 @@ RatchetModelPush
 [![Build Status](https://travis-ci.org/WyriHaximus/RatchetModelPush.png)](https://travis-ci.org/WyriHaximus/RatchetModelPush)
 [![Latest Stable Version](https://poser.pugx.org/WyriHaximus/RatchetModelPush/v/stable.png)](https://packagist.org/packages/WyriHaximus/RatchetModelPush)
 [![Total Downloads](https://poser.pugx.org/WyriHaximus/RatchetModelPush/downloads.png)](https://packagist.org/packages/WyriHaximus/RatchetModelPush)
+[![Coverage Status](https://coveralls.io/repos/WyriHaximus/RatchetModelPush/badge.png)](https://coveralls.io/r/WyriHaximus/RatchetModelPush)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/WyriHaximus/ratchetmodelpush/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Model Push for the [CakePHP Ratchet plugin](http://wyrihaximus.net/projects/cakephp/ratchet/).
