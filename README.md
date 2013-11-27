@@ -1,6 +1,8 @@
 RatchetModelPush
 ================
 
+
+
 Model Push for the [CakePHP Ratchet plugin](http://wyrihaximus.net/projects/cakephp/ratchet/).
 
 ## What is Ratchet ##
@@ -77,7 +79,3 @@ cakeWamp.subscribe('Rachet.WampServer.ModelUpdate.WyriProject.updated.1', functi
 ```
 
 *Note: the actual event you're subscribing to is prefixed by *`Rachet.WampServer.ModelUpdate.`*.*
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/WyriHaximus/ratchetmodelpush/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
