@@ -1,7 +1,7 @@
 RatchetModelPush
 ================
 
-
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/WyriHaximus/ratchetmodelpush/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 Model Push for the [CakePHP Ratchet plugin](http://wyrihaximus.net/projects/cakephp/ratchet/).
 
