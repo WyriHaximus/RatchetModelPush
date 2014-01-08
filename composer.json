@@ -28,5 +28,8 @@
   },
   "extra": {
     "installer-name": "RatchetModelPush"
+  },
+  "config": {
+    "vendor-dir": "Vendor"
   }
 }
