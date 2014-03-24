@@ -84,6 +84,15 @@ cakeWamp.subscribe('Rachet.WampServer.ModelUpdate.WyriProject.updated.1', functi
 
 *Note: the actual event you're subscribing to is prefixed by *`Rachet.WampServer.ModelUpdate.`*.*
 
+Make sure to include the JavaScript file and its dependencies in your view:
+```php
+echo $this->Html->script(array(
+    'Ratchet.when/when',
+    'Ratchet.autobahn/autobahn',
+    'Ratchet.cake-wamp'
+));
+```
+
 ## Plugin License ##
 
 (The MIT License)
