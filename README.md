@@ -51,7 +51,7 @@ The data is passed into the event as a 1 dimensional array.
 
 class Model extends AppModel {
     public $actsAs = array(
-        'Ratchet.Pushable' => array(
+        'RatchetModelPush.Pushable' => array(
             'events' => array(
                 array(
                     'eventName' => 'WyriProject.created',
