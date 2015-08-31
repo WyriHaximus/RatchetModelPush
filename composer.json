@@ -17,12 +17,11 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "composer/installers": "*",
     "wyrihaximus/ratchet": "dev-master"
   },
   "autoload": {
     "psr-4": {
-      "WyriHaximus\\Ratchet\\": "src/"
+      "WyriHaximus\\Ratchet\\ModelPush\\": "src/"
     }
   },
   "require-dev": {
