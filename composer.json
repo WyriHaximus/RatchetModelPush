@@ -6,7 +6,6 @@
     "cakephp",
     "ratchet"
   ],
-  "homepage": "http://github.com/WyriHaximus/RatchetModelPush",
   "license": "MIT",
   "authors": [
     {
@@ -17,18 +16,18 @@
     }
   ],
   "require": {
+    "php": ">=5.4.0",
     "composer/installers": "*",
-    "wyrihaximus/ratchet": "^0.1",
-    "wyrihaximus/ratchet-commands": "^0.1"
+    "wyrihaximus/ratchet": "dev-master"
   },
-  "support": {
-    "issues": "https://github.com/WyriHaximus/RatchetModelPush/issues",
-    "source": "https://github.com/WyriHaximus/RatchetModelPush"
+  "autoload": {
+    "psr-4": {
+      "WyriHaximus\\Ratchet\\": "src/"
+    }
   },
-  "extra": {
-    "installer-name": "RatchetModelPush"
-  },
-  "config": {
-    "vendor-dir": "Vendor"
+  "require-dev": {
+    "cakephp/debug_kit": "^3.0",
+    "phpunit/phpunit": "^4.7",
+    "squizlabs/php_codesniffer": "^1.5.0"
   }
 }
