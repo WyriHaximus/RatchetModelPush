@@ -12,7 +12,7 @@ class AllRatchetModelPushTest extends CakeTestCase {
 	public static function suite() {
 		$suite = new CakeTestSuite('All RatchetModelPush test');
 
-		$path = CakePlugin::path('RatchetModelPush') . 'Test' . DS . 'Case' . DS;
+		$path = CakePlugin::path('RatchetModelPush') . 'tests' . DS . 'Case' . DS;
 		$suite->addTestDirectoryRecursive($path);
 
 		return $suite;

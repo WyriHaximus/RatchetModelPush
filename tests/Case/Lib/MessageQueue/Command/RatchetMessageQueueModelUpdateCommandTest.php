@@ -10,7 +10,7 @@
  */
 
 App::uses('RatchetMessageQueueModelUpdateCommand', 'RatchetModelPush.Lib/MessageQueue/Command');
-App::uses('AbstractCommandTest', 'RatchetCommands.Test/Case/Lib/MessageQueue/Command');
+App::uses('AbstractCommandTest', 'RatchetCommands.tests/Case/Lib/MessageQueue/Command');
 
 class RatchetMessageQueueModelUpdateCommandTest extends AbstractCommandTest {
 

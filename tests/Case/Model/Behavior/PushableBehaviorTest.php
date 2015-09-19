@@ -43,11 +43,11 @@ class PushableBehaviorTest extends CakeTestCase {
 		);
 
 		App::build(array(
-			'Plugin' => array(App::pluginPath('RatchetModelPush') . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS )
+			'Plugin' => array(App::pluginPath('RatchetModelPush') . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS )
 		));
 		CakePlugin::load('TestRatchetModelPush');
 		App::build(array(
-			'Plugin' => array(App::pluginPath('RatchetCommands') . 'Test' . DS . 'test_app' . DS . 'Plugin' . DS )
+			'Plugin' => array(App::pluginPath('RatchetCommands') . 'tests' . DS . 'test_app' . DS . 'Plugin' . DS )
 		));
 		CakePlugin::load('TestRatchetCommands');
 
