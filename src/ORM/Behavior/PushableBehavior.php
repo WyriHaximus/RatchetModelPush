@@ -11,47 +11,98 @@
 
 namespace WyriHaximus\Ratchet\ModelPush\ORM\Behavior;
 
+use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\ORM\Behavior;
 use Cake\ORM\Entity;
-use React\Promise\FulfilledPromise;
+use React\EventLoop\LoopInterface;
 use Thruway\ClientSession;
 use Thruway\Peer\Client;
 use Thruway\Transport\PawlTransportProvider;
 
 class PushableBehavior extends Behavior
 {
+    /**
+     * @param Event $event
+     * @param Entity $entity
+     */
     public function afterSave(Event $event, Entity $entity)
     {
-        $this->publishEvents($entity, $entity->isNew() ? 'create' : 'update');
+        $this->iterateRealms($entity);
     }
 
-    protected function publishEvents(Entity $entity, $type)
+    /**
+     * @param Entity $entity
+     */
+    protected function iterateRealms(Entity $entity)
     {
         if (count($this->config('events')) === 0) {
             return;
         }
 
-        $client = new Client('first');
+        $loop = \WyriHaximus\Ratchet\loopResolver();
+        foreach ($this->config('realms') as $realm) {
+            $client = $this->newClient($realm, $loop);
+            $this->publishEvents($client, $entity, $type);
+            $client->start(false);
+        }
+        $loop->run();
+    }
+
+    /**
+     * @param $realm
+     * @param LoopInterface $loop
+     * @throws \Exception
+     */
+    protected function newClient($realm, LoopInterface $loop)
+    {
+        $client = new Client($realm, $loop);
         $client->setReconnectOptions([
             'max_retries' => 0,
         ]);
-        $client->addTransportProvider(new PawlTransportProvider('ws://127.0.0.1:9000/'));
+        $client->addTransportProvider(
+            new PawlTransportProvider(
+                'ws://' .
+                Configure::read('WyriHaximus.Ratchet.Connection.Websocket.address') .
+                ':' .
+                Configure::read('WyriHaximus.Ratchet.Connection.Websocket.port') .
+                '/'
+            )
+        );
+    }
 
+    /**
+     * @param Client $client
+     * @param Entity $entity
+     */
+    protected function publishEvents(Client $client, Entity $entity)
+    {
+        $type = $entity->isNew() ? 'create' : 'update';
         $client->on('open', function (ClientSession $session) use ($type, $entity) {
             foreach ($this->config('events') as $event) {
                 if ($event['type'] == $type) {
-                    $session->publish($this->prepareEventName($event['name'], $entity->toArray()), [(array)$entity->toArray()]);
+                    $session->publish(
+                        $this->prepareEventName(
+                            $event['name'],
+                            $entity->toArray()
+                        ),
+                        [
+                            (array)$entity->toArray()
+                        ]
+                    );
                 }
             }
 
             $session->close();
         });
-
-        $client->start();
     }
 
-    protected function prepareEventName($eventName, $data)
+    /**
+     * @param string $eventName
+     * @param array $data
+     * @return string
+     */
+    protected function prepareEventName($eventName, array $data)
     {
         $before = [];
         $after  = [];
