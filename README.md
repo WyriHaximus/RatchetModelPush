@@ -2,10 +2,11 @@ RatchetModelPush
 ================
 
 [![Build Status](https://travis-ci.org/WyriHaximus/RatchetModelPush.png)](https://travis-ci.org/WyriHaximus/RatchetModelPush)
-[![Latest Stable Version](https://poser.pugx.org/WyriHaximus/Ratchet-Model-Push/v/stable.png)](https://packagist.org/packages/WyriHaximus/Ratchet-Model-Push)
-[![Total Downloads](https://poser.pugx.org/WyriHaximus/Ratchet-Model-Push/downloads.png)](https://packagist.org/packages/WyriHaximus/Ratchet-Model-Push)
-[![Coverage Status](https://coveralls.io/repos/WyriHaximus/RatchetModelPush/badge.png)](https://coveralls.io/r/WyriHaximus/RatchetModelPush)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/WyriHaximus/ratchetmodelpush/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Latest Stable Version](https://poser.pugx.org/WyriHaximus/ratchet-model-push/v/stable.png)](https://packagist.org/packages/WyriHaximus/ratchet-model-push)
+[![Total Downloads](https://poser.pugx.org/wyrihaximus/ratchet-model-push/downloads.png)](https://packagist.org/packages/wyrihaximus/ratchet-model-push)
+[![Code Coverage](https://scrutinizer-ci.com/g/WyriHaximus/RatchetModelPush/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/WyriHaximus/ratchet-model-push/?branch=master)
+[![License](https://poser.pugx.org/wyrihaximus/ratchet-model-push/license.png)](https://packagist.org/packages/wyrihaximus/ratchet-model-push)
+[![PHP 7 ready](http://php7ready.timesplinter.ch/WyriHaximus/RatchetModelPush/badge.svg)](https://travis-ci.org/WyriHaximus/RatchetModelPush)
 
 Model Push for the [CakePHP Ratchet plugin](http://wyrihaximus.net/projects/cakephp/ratchet/).
 
