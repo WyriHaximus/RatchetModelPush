@@ -23,6 +23,24 @@ use Thruway\Transport\PawlTransportProvider;
 class PushableBehavior extends Behavior
 {
     /**
+     * @var LoopInterface
+     */
+    protected $loop;
+
+    /**
+     * @var bool
+     */
+    protected $loopRunning = false;
+
+    public function initialize(array $config)
+    {
+        $this->loop = \WyriHaximus\Ratchet\loopResolver();
+        $this->loop->futureTick(function () {
+            $this->loopRunning = true;
+        });
+    }
+
+    /**
      * @param Event $event
      * @param Entity $entity
      */
@@ -40,23 +58,30 @@ class PushableBehavior extends Behavior
             return;
         }
 
-        $loop = \WyriHaximus\Ratchet\loopResolver();
         foreach ($this->config('realms') as $realm) {
-            $client = $this->newClient($realm, $loop);
-            $this->publishEvents($client, $entity, $type);
+            $client = $this->newClient($realm);
+            $this->publishEvents($client, $entity);
             $client->start(false);
         }
-        $loop->run();
+
+        if (!$this->loopRunning) {
+            $this->loop->run();
+            $this->loopRunning = false;
+            $this->loop->futureTick(function () {
+                $this->loopRunning = true;
+            });
+        }
     }
 
     /**
-     * @param $realm
-     * @param LoopInterface $loop
+     * @param string $realm
+     *
+     * @return Client
      * @throws \Exception
      */
-    protected function newClient($realm, LoopInterface $loop)
+    protected function newClient($realm)
     {
-        $client = new Client($realm, $loop);
+        $client = new Client($realm, $this->loop);
         $client->setReconnectOptions([
             'max_retries' => 0,
         ]);
