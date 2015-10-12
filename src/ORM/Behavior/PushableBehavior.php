@@ -94,6 +94,7 @@ class PushableBehavior extends Behavior
                 '/'
             )
         );
+        return $client;
     }
 
     /**
