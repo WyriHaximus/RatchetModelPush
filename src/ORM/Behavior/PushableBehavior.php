@@ -81,17 +81,24 @@ class PushableBehavior extends Behavior
      */
     protected function newClient($realm)
     {
+        $defaults = [
+            'secure' => false,
+        ];
+
+        $options = array_merge(
+            $defaults,
+            Configure::read('WyriHaximus.Ratchet.realms.' . $realm),
+            Configure::read('WyriHaximus.Ratchet.external')
+        );
+
         $client = new Client($realm, $this->loop);
         $client->setReconnectOptions([
             'max_retries' => 0,
         ]);
+
         $client->addTransportProvider(
             new PawlTransportProvider(
-                'ws://' .
-                Configure::read('WyriHaximus.Ratchet.Connection.Websocket.address') .
-                ':' .
-                Configure::read('WyriHaximus.Ratchet.Connection.Websocket.port') .
-                '/'
+                \WyriHaximus\Ratchet\createUrl($options['secure'], $options['hostname'], $options['port'], $options['path'])
             )
         );
         return $client;
