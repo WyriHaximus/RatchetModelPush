@@ -68,6 +68,9 @@ class PushableBehavior extends Behavior
         }
 
         if (!$this->loopRunning) {
+            $this->loop->addTimer(1, function () {
+                $this->loop->stop();
+            });
             $this->loop->run();
             $this->loopRunning = false;
             $this->loop->futureTick(function () {
