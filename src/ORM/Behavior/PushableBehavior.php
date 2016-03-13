@@ -15,8 +15,10 @@ use Cake\Core\Configure;
 use Cake\Event\Event;
 use Cake\ORM\Behavior;
 use Cake\ORM\Entity;
+use Psr\Log\NullLogger;
 use React\EventLoop\LoopInterface;
 use Thruway\ClientSession;
+use Thruway\Logging\Logger;
 use Thruway\Peer\Client;
 use Thruway\Transport\PawlTransportProvider;
 
@@ -34,6 +36,7 @@ class PushableBehavior extends Behavior
 
     public function initialize(array $config)
     {
+        Logger::set(new NullLogger());
         $this->loop = \WyriHaximus\Ratchet\loopResolver();
         $this->loop->futureTick(function () {
             $this->loopRunning = true;
