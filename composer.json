@@ -27,6 +27,6 @@
   "require-dev": {
     "cakephp/debug_kit": "^3.0",
     "phpunit/phpunit": "^4.7",
-    "squizlabs/php_codesniffer": "^1.5.0"
+    "squizlabs/php_codesniffer": "^2.8.1"
   }
 }
